@@ -7,6 +7,9 @@
 		file = "core\DynMarket";
 		class bought {};
 		class update {};
+		class DisplayPrices {};
+		class LoadIntoListbox {};
+		class ForcePrice {};
 	};
 
 2.) >> CREATE FOLDER >> \Missionfile\core\DynMarket
@@ -24,6 +27,12 @@ DYNAMICMARKET_boughtItems = [];
 
 7.) >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENTIRELY FROM THE FILE
 
+8.) >> COPY THE CONTENT OF THE DIALOG FOLDER TO >> \Missionfile\dialog\
+
+9.) >> TO \Missionfile\dialog\Masterhandler ADD >> 
+
+#include "dynmarket_changeprice.hpp"
+#include "dynmarket_prices.hpp"
 
 ### SERVER INSTALLATION ###
 

@@ -151,7 +151,7 @@ DYNMARKET_Serveruptime = (DYNMARKET_Serveruptime * 3600) - 60;
 publicVariable "DYNMARKET_UserNotification";
 publicVariable "DYNMARKET_UserNotification_Text";
 if (DYNMARKET_UseExternalDatabase) then {[1] call TON_fnc_HandleDB;};
-//DYNMARKET_UpdateCount = 0;
+DYNMARKET_UpdateCount = 0;
 [] spawn {
 	sleep DYNMARKET_Serveruptime;
 	diag_log "### DYNMARKET >> CURRENT PRICES ARE BEING WRITTEN TO THE DATABASE    ###";

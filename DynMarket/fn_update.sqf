@@ -16,13 +16,16 @@ switch (_mode) do {
 	case 0:
 	{
 		[[DYNAMICMARKET_boughtItems],"TON_fnc_getUpdate",false,false] spawn life_fnc_MP;
-		hint _txt2;
-		hint format ["%1",DYNAMICMARKET_boughtItems];
+		if (DYNMARKET_UserNotification) then {
+			hint _txt2;
+		};
 		DYNAMICMARKET_boughtItems = [];
 	};
 	case 1:
 	{
 		sell_array = _itemArray;
-		hint _txt1;
+		if (DYNMARKET_UserNotification) then {
+			hint _txt1;
+		};
 	};
 };

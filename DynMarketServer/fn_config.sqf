@@ -1,10 +1,6 @@
 /*
 ##################### DYNAMIC MARKET SCRIPT #####################
-<<<<<<< HEAD
 ### AUTHOR: RYAN TT.                                          ###
-=======
-### AUTHER: RYAN TT.                                          ###
->>>>>>> origin/master
 ### STEAM: www.steamcommunity.com/id/ryanthett                ###
 ###                                                           ###
 ### DISCLAIMER: THIS SCRIPT CAN BE USED ON EVERY SERVER ONLY  ###
@@ -12,17 +8,33 @@
 #################################################################
 */
 
-DYNMARKET_Serveruptime        = 5;    // Serveruptime after restart in hours
-DYNMARKET_UseExternalDatabase = true; // Should the script use the External Database?
-DYNMARKET_PriceUpdateInterval = 0.5;  // After how many minutes should the price update?
+// ███████████████████████████████████████████████████████████████████████
+// █████████████████ DYNAMIC MARKET BASIC CONFIGURATION ██████████████████
+// ███████████████████████████████████████████████████████████████████████
 
-//ITEMGROUP CONFIGURATION
+DYNMARKET_Serveruptime         = 05;   // Serveruptime after restart in hours
+DYNMARKET_UseExternalDatabase  = true; // Should the script use the External Database?
+DYNMARKET_PriceUpdateInterval  = 01;   // After how many minutes should the price be updated?
+DYNMARKET_CreateBackups        = true; // Should the server save write the prices regulary into the Database? If false, it will save the prices before Server-restart?
+DYNMARKET_CreateBackupInterval = 03;   // After how many updates (PriceUpdateIntervals) should the prices be saved into the Database?
+DYNMARKET_UserNotification     = true; // Should the user be informed with a hint whenever the prices got updated?
+
+// █████████████████ USER NOTIFICATION TEXTS  █████████████████
+
+DYNMARKET_UserNotification_Text = 
+[
+	"Your prices have been updated!",
+	"The new prices are being calculated by the server..."
+];
+
+// █████████████████ ITEM GROUP CONFIGURATION █████████████████
+
 DYNMARKET_Items_Groups =
 [
 	["Legal",
 		[
-			["apple",0,10,50],
-			["peach",0,30,100]
+			["apple",-1,10,50],
+			["peach",-1,30,100]
 		],
 		0.5
 	],
@@ -34,8 +46,9 @@ DYNMARKET_Items_Groups =
 	]
 ];
 
-//ITEMS TO TRACK CONFIGURATION
-DYNMARKET_Items_ToTrack        = /* INDEX 0 = ITEMNAME ; INDEX 1 = STARTPRICE IF DATABASE-MODE DISABLED, YOU CAN COPY THE SELLARRAY FROM THE CONFIGURATIONFILE FROM THE CLIENT*/
+// █████████████████    ALL SELLABLE ITEMS    █████████████████
+
+DYNMARKET_Items_ToTrack        = 
 [
 	["apple",25],
 	["peach",50],
@@ -124,13 +137,26 @@ DYNMARKET_Items_ToTrack        = /* INDEX 0 = ITEMNAME ; INDEX 1 = STARTPRICE IF
 	["uwsl",5000]
 ];
 
-//### DO NOT MODIFY THE FOLLOWING CODE! ###
+//███████████████████████████████████████████████████████████████████████
+//██████████████████ DO NOT MODIFY THE FOLLOWING CODE! ██████████████████
+//███████████████████████████████████████████████████████████████████████
+
 DYNMARKET_Items_CurrentPriceArr = [];
+DYNMARKET_sellarraycopy = DYNMARKET_Items_ToTrack;
 DYNMARKET_Serveruptime = (DYNMARKET_Serveruptime * 3600) - 60;
 {
 	_currentArray = _x;
 	DYNMARKET_Items_CurrentPriceArr pushBack [_currentArray select 0,_currentArray select 1,0];
 } forEach DYNMARKET_Items_ToTrack;
-//if (DYNMARKET_UseExternalDatabase) then {[] call TON_fnc_HandleDB};
+publicVariable "DYNMARKET_UserNotification";
+publicVariable "DYNMARKET_UserNotification_Text";
+if (DYNMARKET_UseExternalDatabase) then {[1] call TON_fnc_HandleDB;};
+//DYNMARKET_UpdateCount = 0;
+[] spawn {
+	sleep DYNMARKET_Serveruptime;
+	diag_log "### DYNMARKET >> CURRENT PRICES ARE BEING WRITTEN TO THE DATABASE    ###";
+	diag_log "### DYNMARKET >> AS PLANNED, AWAITING RESULT...                      ###";
+	[0] call TON_fnc_HandleDB;
+};
 sleep 5;
 [] call TON_fnc_sleeper;

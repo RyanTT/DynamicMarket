@@ -22,6 +22,8 @@
 DYNAMICMARKET_boughtItems = [];
 [[getPlayerUID player],"TON_fnc_playerLogged",false,false] spawn life_fnc_MP;
 
+7.) >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENTIRELY FROM THE FILE
+
 
 ### SERVER INSTALLATION ###
 
@@ -45,3 +47,14 @@ DYNAMICMARKET_boughtItems = [];
 4.) >> INIT.SQF >> ADD >>
 
 [] execVM "\life_server\Functions\DynMarket\fn_config.sqf";
+
+############################# DATABASE SETUP #############################
+
+CODE:
+
+CREATE TABLE `arma3lifetest`.`dynmarket` (
+  `id` INT NOT NULL DEFAULT 1,
+  `prices` TEXT NOT NULL,
+  PRIMARY KEY (`id`));
+
+INSERT INTO `dynmarket` VALUES (1,'[]');

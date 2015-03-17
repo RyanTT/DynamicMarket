@@ -52,9 +52,7 @@ _tempArrayHolder = DYNMARKET_Items_CurrentPriceArr;
 			_GROUPITEMSarray = _GROUParray select 1;
 			if (_itemGroupName==_GROUPNAME) then
 			{
-				//_index = -1;
 				{
-					//_index = _index + 1;
 					_ITEMSarray = _x;
 					_curITEMname = _ITEMSarray select 0;
 					_curITEMpriceperunit = _ITEMSarray select 1;
@@ -73,8 +71,6 @@ _tempArrayHolder = DYNMARKET_Items_CurrentPriceArr;
 							};
 						} forEach DYNMARKET_Items_CurrentPriceArr;
 						// Calculate new own price
-						//_toLower = _curITEMpriceperunit*_itemAmountSold;
-						//_NEWPRICE = _curItemOldPrice-_toLower;
 						_NEWPRICE = _curItemOldPrice-(_itemAmountSold*(_curItemOldPrice/2000)*_itemFactorOfGroup);
 						if (_NEWPRICE<_curITEMmin) then {_NEWPRICE=_curITEMmin};
 						if (_NEWPRICE>_curITEMmax) then {_NEWPRICE=_curITEMmax};
@@ -110,4 +106,22 @@ _tempArrayHolder = DYNMARKET_Items_CurrentPriceArr;
 	};
 } forEach DYNMARKET_Items_CurrentPriceArr;
 DYNMARKET_Items_CurrentPriceArr = _tempArrayHolder;
-[[1,DYNMARKET_Items_CurrentPriceArr],"life_fnc_update",true,false] spawn life_fnc_MP;
+//[[1,DYNMARKET_Items_CurrentPriceArr],"life_fnc_update",true,false] spawn life_fnc_MP;
+
+// Translate to sell_array
+
+{
+	_itemName = _x select 0;
+	_itemNewPrice = _x select 1;
+	
+	_index = -1;
+	{
+		_index = _index + 1;
+		_curItemName = _x select 0;
+		if (_curItemName==_itemName) then {
+			DYNMARKET_sellarraycopy set [_index,[_itemName,_itemNewPrice]];
+		};
+	} forEach DYNMARKET_sellarraycopy;
+} forEach DYNMARKET_Items_CurrentPriceArr;
+
+[[1,DYNMARKET_sellarraycopy],"life_fnc_update",true,false] spawn life_fnc_MP;

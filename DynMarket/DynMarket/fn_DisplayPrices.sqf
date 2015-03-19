@@ -18,7 +18,7 @@ _index = lbCurSel _listbox;
 
 _costOld = 0;
 
-if (isNil "DYNMARKET_pricesOld") then {DYNMARKET_pricesOld = sell_array;;};
+if (!isNil "DYNMARKET_pricesOld") then {_itemArrayOld = DYNMARKET_pricesOld select _index;} else {_itemArrayOld=["",0];};
 
 _itemArray = DYNMARKET_prices select _index;
 _itemArrayOld = DYNMARKET_pricesOld select _index;

@@ -11,8 +11,6 @@
 _itemName = _this select 0;
 _itemPrice = _this select 1;
 
-_itemName = _x select 0;
-_itemAmountSold = _x select 1;
 _index = -1;
 {
 	_index = _index + 1;

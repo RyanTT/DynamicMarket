@@ -11,6 +11,7 @@ _mode = _this select 0;
 _itemArray = [_this,1,[]] call BIS_fnc_param;
 _txt1 = DYNMARKET_UserNotification_Text select 0;
 _txt2 = DYNMARKET_UserNotification_Text select 1;
+if (isNil "DYNAMICMARKET_boughtItems") then {DYNAMICMARKET_boughtItems=[];};
 
 switch (_mode) do {
 	case 0:

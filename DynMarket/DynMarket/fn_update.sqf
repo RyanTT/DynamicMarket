@@ -23,6 +23,7 @@ switch (_mode) do {
 	};
 	case 1:
 	{
+		DYNMARKET_pricesOld = DYNMARKET_prices;
 		sell_array = _itemArray;
 		DYNMARKET_prices = _itemArray;
 		if (DYNMARKET_UserNotification) then {

@@ -13,10 +13,17 @@ _dialog = findDisplay 7100;
 _listbox = _dialog  displayCtrl 7055;
 _cashdisplay = _dialog displayCtrl 7056;
 _amountsolddisplay = _dialog displayCtrl 7057;
+_cashdisplayold = _dialog displayCtrl 7058;
 _index = lbCurSel _listbox;
 
+_costOld = 0;
+
+if (isNil "DYNMARKET_pricesOld") then {DYNMARKET_pricesOld = sell_array;;};
+
 _itemArray = DYNMARKET_prices select _index;
+_itemArrayOld = DYNMARKET_pricesOld select _index;
 _cost = _itemArray select 1;
+_costOld = _itemArrayOld select 1;
 _itemname = _itemArray select 0;
 
 _amountsold = 0;
@@ -30,3 +37,4 @@ _amountsold = 0;
 
 _amountsolddisplay ctrlSetText format ["%1",_amountsold];
 _cashdisplay ctrlSetText format ["%1$",_cost];
+_cashdisplayold ctrlSetText format ["%1$",_costOld];

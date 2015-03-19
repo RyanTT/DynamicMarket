@@ -18,7 +18,7 @@
 
 4.) >> CONFIGURATION.SQF DELETE LINE >> __CONST__(sell_array,sell_array);
 
-5.) >> REPLACE "__GETC__(sell_array)" WITH >> "sell_array"
+5.) >> REPLACE "__GETC__(sell_array)" WITH >> "sell_array" IN THE WHOLE MISSIONFILE
 
 6.) >> CORE\INIT.sQF >> ADD >> 
 

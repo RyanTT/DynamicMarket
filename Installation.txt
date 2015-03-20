@@ -2,15 +2,15 @@
 
 1.) >> FUNCTIONS.H >> ADD >>
 
-	class DynMarket
-	{
-		file = "core\DynMarket";
-		class bought {};
-		class update {};
-		class DisplayPrices {};
-		class LoadIntoListbox {};
-		class ForcePrice {};
-	};
+    class DynMarket
+    {
+        file = "core\DynMarket";
+        class bought {};
+        class update {};
+        class DisplayPrices {};
+        class LoadIntoListbox {};
+        class ForcePrice {};
+    };
 
 2.) >> CREATE FOLDER >> \Missionfile\core\DynMarket
 
@@ -20,7 +20,7 @@
 
 5.) >> REPLACE "__GETC__(sell_array)" WITH >> "sell_array" IN THE WHOLE MISSIONFILE
 
-6.) >> CORE\INIT.sQF >> ADD >> 
+6.) >> CORE\INIT.sQF >> ADD >>
 
 DYNAMICMARKET_boughtItems = [];
 [[getPlayerUID player],"TON_fnc_playerLogged",false,false] spawn life_fnc_MP;
@@ -29,25 +29,27 @@ DYNAMICMARKET_boughtItems = [];
 
 8.) >> COPY THE CONTENT OF THE DIALOG FOLDER TO >> \Missionfile\dialog\
 
-9.) >> TO \Missionfile\dialog\Masterhandler ADD >> 
+9.) >> TO \Missionfile\dialog\Masterhandler ADD >>
 
 #include "dynmarket_changeprice.hpp"
 #include "dynmarket_prices.hpp"
+
+10.) >> TO \Missionfile\core\shops\fn_virt_sell.sqf BELOW "[] call life_fnc_virt_update;" add "DYNAMICMARKET_boughtItems pushBack [_name,_amount];"
 
 ### SERVER INSTALLATION ###
 
 1.) >> COFIG.CPP >> ADD >>
 
-		class DynMarket
-		{
-			file = "\life_server\Functions\DynMarket";
-			class calculatePrices {};
-			class config {};
-			class getUpdate {};
-			class HandleDB {};
-			class playerLogged {};
-			class sleeper {};
-		};
+        class DynMarket
+        {
+            file = "\life_server\Functions\DynMarket";
+            class calculatePrices {};
+            class config {};
+            class getUpdate {};
+            class HandleDB {};
+            class playerLogged {};
+            class sleeper {};
+        };
 
 2.) >> CREATE FOLDER >> \life_server\Functions\DynMarket
 

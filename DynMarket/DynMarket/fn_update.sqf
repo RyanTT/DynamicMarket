@@ -24,11 +24,13 @@ switch (_mode) do {
 	};
 	case 1:
 	{
-		DYNMARKET_pricesOld = DYNMARKET_prices;
+		_needToUpdate = false;
+		if (!isNil "DYNMARKET_prices") then {DYNMARKET_pricesOld = DYNMARKET_prices;} else {_needToUpdate=true;};
 		sell_array = _itemArray;
 		DYNMARKET_prices = _itemArray;
 		if (DYNMARKET_UserNotification) then {
 			hint _txt1;
 		};
+		if (_needToUpdate) then {DYNMARKET_pricesOld = DYNMARKET_prices;};
 	};
 };

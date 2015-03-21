@@ -17,11 +17,12 @@ _cashdisplayold = _dialog displayCtrl 7058;
 _index = lbCurSel _listbox;
 
 _costOld = 0;
+_itemArrayOld = [];
 
 if (!isNil "DYNMARKET_pricesOld") then {_itemArrayOld = DYNMARKET_pricesOld select _index;} else {_itemArrayOld=["",0];};
 
 _itemArray = DYNMARKET_prices select _index;
-_itemArrayOld = DYNMARKET_pricesOld select _index;
+//_itemArrayOld = DYNMARKET_pricesOld select _index;
 _cost = _itemArray select 1;
 _costOld = _itemArrayOld select 1;
 _itemname = _itemArray select 0;
@@ -37,4 +38,17 @@ _amountsold = 0;
 
 _amountsolddisplay ctrlSetText format ["%1",_amountsold];
 _cashdisplay ctrlSetText format ["%1$",_cost];
-_cashdisplayold ctrlSetText format ["%1$",_costOld];
+_arrowText = "";
+if (_cost<_costOld) then {
+	_percent = (100-((_cost/_costOld)*100));
+	_arrowText = format ["<t color='#FF0000'>↓ %1%2",_percent,"%"];
+} else {
+	if (_costOld<_cost) then {
+		_percent = (100-((_costOld/_cost)*100));
+		_arrowText = format ["<t color='#04B404'>↑ %1%2",_percent,"%"];
+	} else {
+		_percent = (100-((_costOld/_cost)*100));
+		_arrowText = format [""];
+	};
+};
+_cashdisplayold ctrlSetStructuredText parseText format ["%1$ %2",_costOld,_arrowText];

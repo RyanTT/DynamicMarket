@@ -10,6 +10,7 @@
         class DisplayPrices {};
         class LoadIntoListbox {};
         class ForcePrice {};
+        class DYNMARKET_getPrice {};
     };
 
 2.) >> CREATE FOLDER >> \Missionfile\core\DynMarket
@@ -18,7 +19,14 @@
 
 4.) >> CONFIGURATION.SQF DELETE LINE >> __CONST__(sell_array,sell_array);
 
-5.) >> REPLACE "__GETC__(sell_array)" WITH >> "sell_array" IN THE WHOLE MISSIONFILE
+5.1) ALTIS < 4.0.0 >> REPLACE "__GETC__(sell_array)" WITH >> "sell_array" IN THE WHOLE MISSIONFILE
+5.2) ALTIS = 4.0.0 >> IN FILE \Missionfile\core\shops\fn_virt_sell.sqf REPLACE
+
+_price = M_CONFIG(getNumber,"VirtualItems",_type,"sellPrice"); 
+
+WITH >>
+
+_price = [_type] call life_fnc_DYNMARKET_getPrice;
 
 6.) >> CORE\INIT.sQF >> ADD >>
 

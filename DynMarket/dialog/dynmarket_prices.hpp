@@ -34,7 +34,7 @@ class RscText_1000: Life_RscText
 {
 	idc = -1;
 
-	text = "Current Price"; //--- ToDo: Localize;
+	text = "Current Sell Price"; //--- ToDo: Localize;
 	x = 0.5 * safezoneW + safezoneX;
 	y = 0.401039 * safezoneH + safezoneY;
 	w = 0.217708 * safezoneW;
@@ -55,7 +55,7 @@ class RscText_1002: Life_RscText
 {
 	idc = -1;
 
-	text = "Amout Sold by You"; //--- ToDo: Localize;
+	text = "Amout of Items sold by You"; //--- ToDo: Localize;
 	x = 0.5 * safezoneW + safezoneX;
 	y = 0.5 * safezoneH + safezoneY;
 	w = 0.217708 * safezoneW;
@@ -85,13 +85,14 @@ class RscButtonMenu_2400: Life_RscButtonMenu
 	colorText[] = {1,1,1,1};
 	colorBackground[] = {0,0.52,0.03,1};
 };
-class RscText_1007: Life_RscText
+class RscText_1007: Life_RscStructuredText
 {
 	idc = 7058;
 
 	text = ""; //--- ToDo: Localize;
 	x = 0.5 * safezoneW + safezoneX;
-	y = 0.447221 * safezoneH + safezoneY;
+	//y = 0.447221 * safezoneH + safezoneY;
+	y = 0.460221 * safezoneH + safezoneY;
 	w = 0.20625 * safezoneW;
 	h = 0.0549786 * safezoneH;
 	colorText[] = {0.33,0.33,0.33,1};

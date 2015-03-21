@@ -19,8 +19,11 @@
 
 4.) >> CONFIGURATION.SQF DELETE LINE >> __CONST__(sell_array,sell_array);
 
-5.1) ALTIS < 4.0.0 >> REPLACE "__GETC__(sell_array)" WITH >> "sell_array" IN THE WHOLE MISSIONFILE
-5.2) ALTIS = 4.0.0 >> IN FILE \Missionfile\core\shops\fn_virt_sell.sqf REPLACE
+5.1) 
+
+FOR ALTIS VERSION 3.x.x.x >> REPLACE "__GETC__(sell_array)" WITH >> "sell_array" IN THE WHOLE MISSIONFILE
+
+FOR ALTIS VERSION 4.0.0.0 >> IN FILE \Missionfile\core\shops\fn_virt_sell.sqf REPLACE
 
 _price = M_CONFIG(getNumber,"VirtualItems",_type,"sellPrice"); 
 
@@ -33,11 +36,13 @@ _price = [_type] call life_fnc_DYNMARKET_getPrice;
 DYNAMICMARKET_boughtItems = [];
 [[getPlayerUID player],"TON_fnc_playerLogged",false,false] spawn life_fnc_MP;
 
-7.) >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENTIRELY FROM THE FILE
+7.) 
+
+FOR ALTIS VERSION 3.x.x.x >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENTIRELY FROM THE FILE
 
 8.) >> COPY THE CONTENT OF THE DIALOG FOLDER TO >> \Missionfile\dialog\
 
-9.) >> TO \Missionfile\dialog\Masterhandler ADD >>
+9.) >> TO \Missionfile\dialog\Masterhandler.hpp ADD >>
 
 #include "dynmarket_changeprice.hpp"
 #include "dynmarket_prices.hpp"

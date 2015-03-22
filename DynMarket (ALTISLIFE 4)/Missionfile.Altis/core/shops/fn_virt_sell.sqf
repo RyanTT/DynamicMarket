@@ -10,8 +10,8 @@ private["_type","_index","_price","_amount","_name"];
 if(EQUAL(lbCurSel 2402,-1)) exitWith {};
 _type = lbData[2402,(lbCurSel 2402)];
 
-_price = 0;
-_itemNameToSearchFor = M_CONFIG(getText,"VirtualItems",_type,"VarName");
+_price = 0.0;
+_itemNameToSearchFor = _type;
 {
 	_curItemName = _x select 0;
 	_curItemPrice = _x select 1;
@@ -50,6 +50,8 @@ if(EQUAL(life_shop_type,"drugdealer")) then {
 		life_shop_npc setVariable["sellers",_array,true];
 	};
 };
+
+hint format ["gefundener preis = %1",_price];
 
 [0] call SOCK_fnc_updatePartial;
 [3] call SOCK_fnc_updatePartial;

@@ -19,26 +19,14 @@
 
 4.) >> CONFIGURATION.SQF DELETE LINE >> __CONST__(sell_array,sell_array);
 
-5.1) 
-
-FOR ALTIS VERSION 3.x.x.x >> REPLACE "__GETC__(sell_array)" WITH >> "sell_array" IN THE WHOLE MISSIONFILE
-
-FOR ALTIS VERSION 4.0.0.0 >> IN FILE \Missionfile\core\shops\fn_virt_sell.sqf REPLACE
-
-_price = M_CONFIG(getNumber,"VirtualItems",_type,"sellPrice"); 
-
-WITH >>
-
-_price = [_type] call life_fnc_DYNMARKET_getPrice;
+5.)>> REPLACE "__GETC__(sell_array)" WITH >> "sell_array" IN THE WHOLE MISSIONFILE
 
 6.) >> CORE\INIT.sQF >> ADD >>
 
 DYNAMICMARKET_boughtItems = [];
 [[getPlayerUID player],"TON_fnc_playerLogged",false,false] spawn life_fnc_MP;
 
-7.) 
-
-FOR ALTIS VERSION 3.x.x.x >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENTIRELY FROM THE FILE
+7.) >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENTIRELY FROM THE FILE
 
 8.) >> COPY THE CONTENT OF THE DIALOG FOLDER TO >> \Missionfile\dialog\
 
@@ -46,16 +34,6 @@ FOR ALTIS VERSION 3.x.x.x >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENT
 
 #include "dynmarket_changeprice.hpp"
 #include "dynmarket_prices.hpp"
-
-10.) IF YOU ARE USING ALTIS 4 REPLACE IN THE FILE FN_LOADINTOLISTBOX.SQF THIS >>
-
-_itemdisplayname = [([(_x select 0),0] call life_fnc_varHandle)] call life_fnc_varToStr;
-
-WITH THIS >>
-
-_itemdisplayname = M_CONFIG(getText,"VirtualItems",_x select 0,"displayName");
-
-
 
 10.) >> TO \Missionfile\core\shops\fn_virt_sell.sqf BELOW "[] call life_fnc_virt_update;" add "DYNAMICMARKET_boughtItems pushBack [_name,_amount];"
 

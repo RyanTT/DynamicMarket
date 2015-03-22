@@ -76,7 +76,7 @@ FOR ALTIS VERSION 3.x.x.x >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENT
 
 CODE:
 
-CREATE TABLE `arma3lifetest`.`dynmarket` (
+CREATE TABLE `dynmarket` (
   `id` INT NOT NULL DEFAULT 1,
   `prices` TEXT NOT NULL,
   PRIMARY KEY (`id`));

@@ -51,7 +51,5 @@ if(EQUAL(life_shop_type,"drugdealer")) then {
 	};
 };
 
-hint format ["gefundener preis = %1",_price];
-
 [0] call SOCK_fnc_updatePartial;
 [3] call SOCK_fnc_updatePartial;

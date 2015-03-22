@@ -9,7 +9,16 @@
 private["_type","_index","_price","_amount","_name"];
 if(EQUAL(lbCurSel 2402,-1)) exitWith {};
 _type = lbData[2402,(lbCurSel 2402)];
-_price = [_type] call life_fnc_DYNMARKET_getPrice;
+
+_price = 0;
+_itemNameToSearchFor = M_CONFIG(getText,"VirtualItems",_type,"VarName");
+{
+	_curItemName = _x select 0;
+	_curItemPrice = _x select 1;
+	if (_curItemName==_itemNameToSearchFor) then {_price=_curItemPrice};
+} forEach DYNMARKET_prices;
+
+//_price = [_type] call life_fnc_DYNMARKET_getPrice;
 //_price = M_CONFIG(getNumber,"VirtualItems",_type,"sellPrice");
 if(EQUAL(_price,-1)) exitWith {};
 

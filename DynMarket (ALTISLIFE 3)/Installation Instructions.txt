@@ -1,8 +1,8 @@
 ###############################################################################################################
-############################### DYNMARKET ALTIS LIFE VERSION 4.0.0 INSTALLATION GUIDE #########################
+############################## DYNMARKET ALTIS LIFE VERSION 3.1.4.8 INSTALLATION GUIDE ########################
 ###############################################################################################################
 
-                     NOTE: THIS INSTALLATION GUIDE WILL ONLY WORK IF YOU ARE USING ALTISLIFE 4!
+                     NOTE: THIS INSTALLATION GUIDE WILL ONLY WORK IF YOU ARE USING ALTISLIFE 3!
 
 ###############################################################################################################
 											CLIENTSIDE INSTALLATION
@@ -41,7 +41,7 @@ DYNAMICMARKET_boughtItems = [];
 
 ============= STEP 5 =============
 
-COPY THE CONTENT OF THE FOLDER "Missionfile.Altis\dialog" TO >> \Missionfile\dialog\
+COPY THE CONTENT OF THE FOLDER "Missionfile.Altis\dialog" TO \Missionfile\dialog\
 
 ============= STEP 6 =============
 
@@ -50,7 +50,32 @@ OPEN THE FILE \Missionfile\dialog\Masterhandler.hpp AND ADD THE FOLLOWING AT THE
 #include "dynmarket_changeprice.hpp"
 #include "dynmarket_prices.hpp"
 
+============= STEP 7 =============
 
+OPEN THE FILE \Missionfile\core\configuration.sqf AND DELETE THE FOLLOWING LINE COMPLETELY
+
+__CONST__(sell_array,sell_array);
+
+============= STEP 8 =============
+
+REPLACE "__GETC__(sell_array)" WITH "sell_array" IN THE WHOLE MISSIONFILE
+
+IF YOU ARE USING NOTEPAD++ YOU CAN PRESS CTRL+SHIFT+F, SELECT YOUR MISSIONFILE FOLDER AND ENTER THE FOLLOWING
+
+Search for:    __GETC__(sell_array)
+Replace with:  sell_array
+
+============= STEP 9 =============
+
+OPEN THE FILE \Missionfile\core\clientValidator.sqf AND DELETE THE FOLLOWING CODE ENITRELY FROM THE FILE
+
+,"sell_array"
+
+============= STEP 10 ============
+
+COPY THE FILE "Missionfile.Altis\core\shops\fn_virt_sell.sqf
+
+AND PASTE&REPLACE IT TO THE FOLDER \Missionfile\core\shops\
 
 ###############################################################################################################
 											SERVERSIDE INSTALLATION
@@ -85,12 +110,6 @@ COPY CONTENT OF "life_server\DynMarket" TO \life_server\Functions\DynMarket\
 OPEN THE FILE \life_server\init.sqf AND ADD THE FOLLOWING CODE AT THE BOTTOM OF THE FILE
 
 [] execVM "\life_server\Functions\DynMarket\fn_config.sqf";
-
-============= STEP 6 =============
-
-COPY THE FILE "Missionfile.Altis\core\shops\fn_virt_sell.sqf
-
-AND PASTE&REPLACE IT TO THE FOLDER \Missionfile\core\shops\
 
 ###############################################################################################################
 											MYSQL DATABASE INSTALLATION

@@ -47,6 +47,16 @@ FOR ALTIS VERSION 3.x.x.x >> CORE\CLIENTVALIDATOR.SQF >> DELETE "SELL_ARRAY" ENT
 #include "dynmarket_changeprice.hpp"
 #include "dynmarket_prices.hpp"
 
+10.) IF YOU ARE USING ALTIS 4 REPLACE IN THE FILE FN_LOADINTOLISTBOX.SQF THIS >>
+
+_itemdisplayname = [([(_x select 0),0] call life_fnc_varHandle)] call life_fnc_varToStr;
+
+WITH THIS >>
+
+_itemdisplayname = M_CONFIG(getText,"VirtualItems",_x select 0,"displayName");
+
+
+
 10.) >> TO \Missionfile\core\shops\fn_virt_sell.sqf BELOW "[] call life_fnc_virt_update;" add "DYNAMICMARKET_boughtItems pushBack [_name,_amount];"
 
 ### SERVER INSTALLATION ###

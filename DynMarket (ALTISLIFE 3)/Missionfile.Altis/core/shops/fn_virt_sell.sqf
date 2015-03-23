@@ -12,7 +12,7 @@ _index = [_type,sell_array] call TON_fnc_index;
 if(_index == -1) exitWith {};
 _index2 = [_type,DYNMARKET_prices] call TON_fnc_index;
 _price = 0.0;
-if(_index2==-1) then {_price = (sell_array select _index) select 1;} else {_price = (DYNMARKET_prices select _index2) select 1;};
+if(_index2 == -1) then {_price = (sell_array select _index) select 1;} else {_price = (DYNMARKET_prices select _index2) select 1;};
 _var = [_type,0] call life_fnc_varHandle;
 
 _amount = ctrlText 2405;
@@ -25,11 +25,9 @@ _name = [_var] call life_fnc_vartostr;
 if(([false,_type,_amount] call life_fnc_handleInv)) then
 {
 	hint format[localize "STR_Shop_Virt_SellItem",_amount,_name,[_price] call life_fnc_numberText];
-	life_cash_piratesoa = life_cash_piratesoa + _price;
+	life_cash = life_cash + _price;
 	DYNAMICMARKET_boughtItems pushBack [_type,_amount];
 	[] call life_fnc_virt_update;
-	_toLog = format ["4|%1 hat %2 %3 fuer %4 Dollar verkauft.", name player, _amount, _name, [_price] call life_fnc_numberText];
-	[[_toLog],"Arma3Log"] call life_fnc_MP;
 };
 
 if(life_shop_type == "heroin") then

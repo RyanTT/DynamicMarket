@@ -143,7 +143,7 @@ DYNMARKET_Items_ToTrack        =
 
 DYNMARKET_Items_CurrentPriceArr = [];
 DYNMARKET_sellarraycopy = DYNMARKET_Items_ToTrack;
-DYNMARKET_Serveruptime = (DYNMARKET_Serveruptime * 3600) - 60;
+DYNMARKET_Serveruptime = (DYNMARKET_Serveruptime * 3600) - 300;
 {
 	_currentArray = _x;
 	DYNMARKET_Items_CurrentPriceArr pushBack [_currentArray select 0,_currentArray select 1,0];

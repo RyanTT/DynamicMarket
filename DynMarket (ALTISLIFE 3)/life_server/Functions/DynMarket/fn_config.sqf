@@ -152,11 +152,13 @@ publicVariable "DYNMARKET_UserNotification";
 publicVariable "DYNMARKET_UserNotification_Text";
 if (DYNMARKET_UseExternalDatabase) then {[1] call TON_fnc_HandleDB;};
 DYNMARKET_UpdateCount = 0;
-[] spawn {
-	sleep DYNMARKET_Serveruptime;
-	diag_log "### DYNMARKET >> CURRENT PRICES ARE BEING WRITTEN TO THE DATABASE    ###";
-	diag_log "### DYNMARKET >> AS PLANNED, AWAITING RESULT...                      ###";
-	[0] call TON_fnc_HandleDB;
+if (DYNMARKET_UseExternalDatabase) then {
+	[] spawn {
+		sleep DYNMARKET_Serveruptime;
+		diag_log "### DYNMARKET >> CURRENT PRICES ARE BEING WRITTEN TO THE DATABASE    ###";
+		diag_log "### DYNMARKET >> AS PLANNED, AWAITING RESULT...                      ###";
+		[0] call TON_fnc_HandleDB;
+	};
 };
 sleep 5;
 [] call TON_fnc_sleeper;

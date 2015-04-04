@@ -30,7 +30,7 @@ _eventToPrice = _eventToHappen select 2;
 
 {
 	_itemName = _x;
-	_itemNewPrice = _x;
+	_itemNewPrice = 0;
 	_index = -1;
 	{
 		_index = _index + 1;

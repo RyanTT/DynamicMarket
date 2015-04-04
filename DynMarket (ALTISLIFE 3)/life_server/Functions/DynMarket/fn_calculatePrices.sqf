@@ -124,4 +124,6 @@ DYNMARKET_Items_CurrentPriceArr = _tempArrayHolder;
 	} forEach DYNMARKET_sellarraycopy;
 } forEach DYNMARKET_Items_CurrentPriceArr;
 
+if (DYNMARKET_createRandomEvents) then {DYNMARKET_waitForEvent = false;[] spawn TON_fnc_randomEvent;waitUntil {DYNMARKET_waitForEvent};};
+
 [[1,DYNMARKET_sellarraycopy],"life_fnc_update",true,false] spawn life_fnc_MP;

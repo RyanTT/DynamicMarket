@@ -22,7 +22,6 @@ OPEN THE FILE FUNCTIONS.H AND ADD THE FOLLOWING CLASS UNDER THE LIFE TAG
         class LoadIntoListbox {};
         class ForcePrice {};
         class DYNMARKET_getPrice {};
-	class DYNMARKET_getIcon {};
     };
 	
 ============= STEP 2 =============

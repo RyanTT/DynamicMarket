@@ -25,11 +25,9 @@ _name = [_var] call life_fnc_vartostr;
 if(([false,_type,_amount] call life_fnc_handleInv)) then
 {
 	hint format[localize "STR_Shop_Virt_SellItem",_amount,_name,[_price] call life_fnc_numberText];
-	life_cash_piratesoa = life_cash_piratesoa + _price;
+	life_cash = life_cash + _price;
 	DYNAMICMARKET_boughtItems pushBack [_type,_amount];
 	[] call life_fnc_virt_update;
-	_toLog = format ["4|%1 hat %2 %3 fuer %4 Dollar verkauft.", name player, _amount, _name, [_price] call life_fnc_numberText];
-	[[_toLog],"Arma3Log"] call life_fnc_MP;
 };
 
 if(life_shop_type == "heroin") then

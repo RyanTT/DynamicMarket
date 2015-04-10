@@ -18,5 +18,5 @@ _listbox = _dialog displayCtrl 7055;
 	_itemDisplayIcon = M_CONFIG(getText,"VirtualItems",_itemName,"icon");
 	_itemDisplayName = localize _itemDisplayName;
 	_listbox lbAdd format ["%1",_itemDisplayName];
-	_listbox lbSetPicture [_index,_itemDisplayIcon];
+	_listbox lbSetData [(lbSize _listbox )-1,_itemDisplayIcon];
 } forEach DYNMARKET_prices;

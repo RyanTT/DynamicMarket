@@ -23,6 +23,7 @@ OPEN THE FILE FUNCTIONS.H AND ADD THE FOLLOWING CLASS UNDER THE LIFE TAG
         class ForcePrice {};
         class DYNMARKET_getPrice {};
 	class DYNMARKET_getIcon {};
+	class randomEvent {};
     };
 	
 ============= STEP 2 =============

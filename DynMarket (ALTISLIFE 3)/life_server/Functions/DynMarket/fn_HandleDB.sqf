@@ -44,6 +44,18 @@ switch (_switch) do
 			diag_log "####################################################################";
 		} else {
 			DYNMARKET_Items_CurrentPriceArr = _pricearray;
+			{
+				_itemName = _x select 0;
+				_itemNewPrice = _x select 1;		
+				_index = -1;
+				{
+					_index = _index + 1;
+					_curItemName = _x select 0;
+					if (_curItemName==_itemName) then {
+						DYNMARKET_sellarraycopy set [_index,[_itemName,_itemNewPrice]];
+					};
+				} forEach DYNMARKET_sellarraycopy;
+			} forEach DYNMARKET_Items_CurrentPriceArr;
 			diag_log "########################## DYNAMIC MARKET ##########################";
 			diag_log "### >> SUCCESSFULLY LOADED PRICES FROM DATABASE!                 ###";
 			diag_log "####################################################################";

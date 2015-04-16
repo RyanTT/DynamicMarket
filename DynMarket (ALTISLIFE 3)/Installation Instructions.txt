@@ -5,7 +5,7 @@
                      NOTE: THIS INSTALLATION GUIDE WILL ONLY WORK IF YOU ARE USING ALTISLIFE 3!
 
 ###############################################################################################################
-											CLIENTSIDE INSTALLATION
+									             CLIENTSIDE INSTALLATION
 										    MISSIONFILE.ALTIS FOLDER
 ###############################################################################################################
 
@@ -85,7 +85,7 @@ AND PASTE&REPLACE IT TO THE FOLDER \Missionfile\core\shops\
 
 ============= STEP 1 =============
 
-OPEN THE FILE COFIG.CPP AND ADD THE FOLLOWING CLASS UNDER THE TAG TON
+OPEN THE FILE CONFIG.CPP AND ADD THE FOLLOWING CLASS UNDER THE TAG TON
 
         class DynMarket
         {

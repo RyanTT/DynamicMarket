@@ -15,14 +15,16 @@ _cashdisplay = _dialog displayCtrl 7056;
 _amountsolddisplay = _dialog displayCtrl 7057;
 _cashdisplayold = _dialog displayCtrl 7058;
 _index = lbCurSel _listbox;
-
-_costOld = 0;
+_type = _listbox lbData _index;
 _itemArrayOld = [];
 
-if (!isNil "DYNMARKET_pricesOld") then {_itemArrayOld = DYNMARKET_pricesOld select _index;} else {_itemArrayOld=["",0];};
+if (!isNil "DYNMARKET_pricesOld") then {_itemArrayOld = DYNMARKET_pricesOld select (([_type,DYNMARKET_prices] call TON_fnc_index))} else {_itemArrayOld=["",0];};
+
+_index = [_type,DYNMARKET_prices] call TON_fnc_index;
+
+_costOld = 0;
 
 _itemArray = DYNMARKET_prices select _index;
-//_itemArrayOld = DYNMARKET_pricesOld select _index;
 _cost = _itemArray select 1;
 _costOld = _itemArrayOld select 1;
 _itemname = _itemArray select 0;

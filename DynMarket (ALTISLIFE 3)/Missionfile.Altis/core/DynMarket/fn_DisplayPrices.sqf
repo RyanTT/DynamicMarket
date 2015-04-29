@@ -53,4 +53,4 @@ if (_cost<_costOld) then {
 		_arrowText = format [""];
 	};
 };
-_cashdisplayold ctrlSetStructuredText parseText format ["%1$ %2",_costOld,_arrowText];
+_cashdisplayold ctrlSetStructuredText parseText format ["%1$ %2",floor(_costOld),_arrowText];

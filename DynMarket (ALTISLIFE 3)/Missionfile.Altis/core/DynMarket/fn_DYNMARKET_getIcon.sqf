@@ -14,7 +14,7 @@ _iconPath = "";
 
 switch (_itemName) do {
 	//case "apple": {_iconPath = "icons\apple.paa";};
-	case default: {_iconPath = "";};
+	case default {_iconPath = "";};
 };
 
 _iconPath;

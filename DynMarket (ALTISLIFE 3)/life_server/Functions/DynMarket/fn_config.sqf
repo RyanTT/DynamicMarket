@@ -18,6 +18,7 @@ DYNMARKET_PriceUpdateInterval  = 01;   // After how many minutes should the pric
 DYNMARKET_CreateBackups        = true; // Should the server save write the prices regulary into the Database? If false, it will save the prices before Server-restart?
 DYNMARKET_CreateBackupInterval = 03;   // After how many updates (PriceUpdateIntervals) should the prices be saved into the Database?
 DYNMARKET_UserNotification     = true; // Should the user be informed with a hint whenever the prices got updated?
+DYNMARKET_createRandomEvents   = true; // Should random events appear that influence the market?
 
 // █████████████████ USER NOTIFICATION TEXTS  █████████████████
 

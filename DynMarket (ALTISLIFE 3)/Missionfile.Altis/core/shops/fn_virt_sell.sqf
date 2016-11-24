@@ -12,7 +12,7 @@ _index = [_type,sell_array] call TON_fnc_index;
 if(_index == -1) exitWith {};
 _index2 = [_type,DYNMARKET_prices] call TON_fnc_index;
 _price = 0.0;
-if(_index2==-1) then {_price = (sell_array select _index) select 1;} else {_price = (DYNMARKET_prices select _index2) select 1;};
+if(_index2 == -1) then {_price = (sell_array select _index) select 1;} else {_price = (DYNMARKET_prices select _index2) select 1;};
 _var = [_type,0] call life_fnc_varHandle;
 
 _amount = ctrlText 2405;
